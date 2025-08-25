@@ -28,7 +28,7 @@ Conectar estudantes e seus respectivos coursos em um único local, facilitando a
 ## Installation
 
 Clone o repositório usando seu terminal. <br>
-[Clonar repositório](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository) Para mais informacões sobre clonar repositório no GitHub.
+[Clonar repositório](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository) Para mais informacões sobre como clonar repositório no GitHub.
 
 - Passo 1
 ```bash
@@ -45,7 +45,7 @@ Obs: Se já tem um embiente virtual, não esqueça de adicionar ao arquivo .giti
 pithon -m venv venv
 ```
 - Passo 4
-Agora, instale o djnago no seu ambiente virtual.
+Agora, instale o django no seu ambiente virtual.
 ```
 pip install django
 ```
