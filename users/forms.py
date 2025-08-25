@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Profile
+from datetime import date
 
 ## User Registration Form
 
@@ -9,6 +10,13 @@ class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(
         label="Email",
         widget=forms.EmailInput(attrs={'autocomplete': 'Email'})
+    )
+    first_name = forms.CharField(label="Nome",max_length=150,)
+    last_name = forms.CharField(label="Sobrenome",max_length=150,)
+    date_of_birth = forms.DateField(
+        label="Data de Nascimento",
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        required=True
     )
     bio = forms.CharField(
         label="Biografia",
@@ -21,7 +29,7 @@ class UserRegisterForm(UserCreationForm):
     )
 
     class Meta(UserCreationForm.Meta):
-        fields = UserCreationForm.Meta.fields + ('email',)
+        fields = UserCreationForm.Meta.fields + ('first_name','last_name','email',)
         labels = {
             'username': 'Nome de usuário',
             'password': 'Senha',
@@ -32,6 +40,14 @@ class UserRegisterForm(UserCreationForm):
             'password': 'Sua senha não pode ser muito parecida com suas outras informações pessoais.',
             'password2': 'Digite a mesma senha para verificação.',
         }
+    def clean_date_of_birth(self):
+        dob = self.cleaned_data.get('date_of_birth')
+        if dob:
+            today = date.today()
+            age = today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
+            if age < 18:
+                raise forms.ValidationError("Você deve ter 18 anos ou mais para se registrar.")
+        return dob
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -42,22 +58,40 @@ class UserRegisterForm(UserCreationForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.email = self.cleaned_data['email']
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
         if commit:
             user.save()
             Profile.objects.create(
                 user=user,
                 bio=self.cleaned_data['bio'],
-                avatar=self.cleaned_data['avatar']
+                avatar=self.cleaned_data['avatar'],
+                date_of_birth=self.cleaned_data.get('date_of_birth')
             )
         return user
     
 
 ## Profile Update Form
 
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name']
+        labels = {
+            'first_name': 'Nome',
+            'last_name': 'Sobrenome',
+        }
+
 class ProfileUpdateForm(forms.ModelForm):
+    date_of_birth = forms.DateField(
+        label="Data de Nascimento",
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        required=True
+    )
+    
     class Meta:
         model = Profile
-        fields = ['bio', 'avatar']
+        fields = ['date_of_birth', 'bio', 'avatar']
         widgets = {
             'bio': forms.Textarea(attrs={'rows': 4})
         }

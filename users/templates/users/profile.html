@@ -1,11 +1,21 @@
 <h1>Seu Perfil</h1>
-{% if request.user.profile.avatar %}
-    <img src="{{ request.user.profile.avatar.url }}" alt="Profile Avatar" style="max-height: 200px; max-width: 200px;">
+
+{% if user.profile.avatar %}
+    <img src="{{ user.profile.avatar.url }}" alt="Profile Avatar" style="max-height: 200px; max-width: 200px;">
 {% else %}
-    <p>No avatar uploaded yet.</p>
+    <p>Nenhum avatar enviado ainda.</p>
 {% endif %}
-<form method="POST" enctype="multipart/form-data">
+
+<p>Nome: {{ user.first_name }} {{ user.last_name }}</p>
+<p>E-mail: {{ user.email }}</p>
+<p>Idade: {{ user.profile.get_age }}</p>
+<p>Bio: {{ user.profile.bio }}</p>
+
+<p>
+    <a href="{% url 'profile_update' %}">Atualizar Perfil</a>
+</p>
+
+<form action="{% url 'logout' %}" method="post">
     {% csrf_token %}
-    {{ p_form.as_p }}
-    <button type="submit">Update Profile</button>
+    <button type="submit">Sair</button>
 </form>

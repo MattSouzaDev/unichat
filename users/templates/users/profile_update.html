@@ -1,0 +1,18 @@
+<h1>Atualizar Perfil</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Info de Usuário</legend>
+        {{ u_form.as_p }}
+    </fieldset>
+    
+    <fieldset>
+        <legend>Info do Perfil</legend>
+        {{ p_form.as_p }}
+    </fieldset>
+    
+    <button type="submit">Atualizar</button>
+</form>
+
+<p><a href="{% url 'profile' %}">Voltar para o Perfil</a></p>
