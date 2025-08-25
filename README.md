@@ -10,44 +10,35 @@
 </h4>
 
 
-## Introduction
+## Introdução 
 
-Docusaurus is a project for building, deploying, and maintaining open source project websites easily.
-
-Short on time? Check out our [5-minute tutorial ⏱️](https://)!
-
-**Tip**: use **[Django Documentation](https://)** to test Docusaurus immediately in a playground.
-
+Conectar estudantes e seus respectivos coursos em um único local, facilitando a comunicação e a interação entre eles.
 
 # :hammer: Funcionalidades do projeto
-- `Funcionalidade 1`: descrição da funcionalidade 1
-- `Funcionalidade 2`: descrição da funcionalidade 2
-- `Funcionalidade 2a`: descrição da funcionalidade 2a relacionada à funcionalidade 2
-- `Funcionalidade 3`: descrição da funcionalidade 3
+- `Funcionalidade 1`: Disponibilizar um chat geral da universidade.
+- `Funcionalidade 2`: Cadastrar usuários
+- `Funcionalidade 3`: Permitir que alunos e funcionários divulguem no chat e na seções especificas.
+- `Funcionalidade 4`: Permitir que admistradores publiquem eventos na universidade.
 
+- **Como se cadastrear na plataforma**
 
-- **Simple to Start**
-
-> Docusaurus...
-
-- **Localizable**
-
-> Docusaurus ships with ...
+> Visita o site [UniChat](https://localhost:8000)
+> Se ...
 
 ## Installation
 
-Use the initialization CLI to create your site:
+Clone o repositório usando seu terminal. <br>
+[Clonar repositório](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository) Para mais informacões sobre clonar repositório no GitHub.
 
 ```bash
 npm init docusaurus@latest
 ```
 
-[Read the docs](https://) for any further information.
 
 ## Contributors
 
 This project exists thanks to all the people who contribute. <a href="https"></a>
 
 ## Autores
-| [<img loading="lazy" src="https://avatars.githubusercontent.com/mattsouza-dev" width=115><br><sub>Matheus Souza</sub>](https://github.com/mattsouza-dev) |  [<img loading="lazy" src=" " width=115><br><sub>Guilherme Lima</sub>](https://github.com) |  [<img loading="lazy" src="?v=4" width=115><br><sub>Alex Felipe</sub>](https://github.com) |
-| :---: | :---: | :---: |
+| [<img loading="lazy" src="https://avatars.githubusercontent.com/MattSouzaDev" width=115><br><sub>Matheus Souza</sub>](https://github.com/MattSouzaDev) |  [<img loading="lazy" src="#" width=115><br><sub>Gabriel</sub>](https://github.com) |  [<img loading="lazy" src="?v=4" width=115><br><sub>Elias</sub>](https://github.com) | [<img loading="lazy" src="" width=115><br><sub>Jose </sub>](https://github.com/MattSouzaDev) |  [<img loading="lazy" src="" width=115><br><sub>Henrique</sub>](https://github.com) |
+| :---: | :---: | :---: | :---: | :---: |
