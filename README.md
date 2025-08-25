@@ -44,11 +44,12 @@ Crie um ambiente virtual.
 pithon -m venv venv
 ```
 <br>
-Obs: Se já tem um embiente virtual, não esqueça de adicionar ao arquivo .gitignore.
+Obs: Se já tem um embiente virtual, não esqueça de adicionar ao arquivo .gitignore. 
+<br>
 - Passo 4
 Agora instale o djnago no seu ambiente virtual se ja não tem instalado.
 ```
-p
+pip install django
 ```
 Para mais informação de como instalar o django [Leia a Documentação](https://docs.djangoproject.com/en/5.2/intro/install/)
 ## Contribuidores
