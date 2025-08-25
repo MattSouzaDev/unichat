@@ -1,0 +1,11 @@
+<h1>Seu Perfil</h1>
+{% if request.user.profile.avatar %}
+    <img src="{{ request.user.profile.avatar.url }}" alt="Profile Avatar" style="max-height: 200px; max-width: 200px;">
+{% else %}
+    <p>No avatar uploaded yet.</p>
+{% endif %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ p_form.as_p }}
+    <button type="submit">Update Profile</button>
+</form>
