@@ -34,16 +34,25 @@ Clone o repositório usando seu terminal. <br>
 ```bash
 git clone https://github.com/MattSouzaDev/unichat.git
 ```
-- Passo 2
+- Passo 2 
 ```
 cd unichat
 ```
+- Passo 3 <br>
+Crie um ambiente virtual. 
+```
+pithon -m venv venv
+```
+<br>
+Obs: Se já tem um embiente virtual, não esqueça de adicionar ao arquivo .gitignore.
+- Passo 4
+Agora instale o djnago no seu ambiente virtual se ja não tem instalado.
+```
+p
+```
+Para mais informação de como instalar o django [Leia a Documentação](https://docs.djangoproject.com/en/5.2/intro/install/)
+## Contribuidores
 
-
-## Contributors
-
-This project exists thanks to all the people who contribute. <a href="https"></a>
-
-## Autores
+Este projeto existe graças ao nosso time! 
 | [<img loading="lazy" src="https://avatars.githubusercontent.com/MattSouzaDev" width=115><br><sub>Matheus Souza</sub>](https://github.com/MattSouzaDev) |  [<img loading="lazy" src="#" width=115><br><sub>Gabriel</sub>](https://github.com) |  [<img loading="lazy" src="?v=4" width=115><br><sub>Elias</sub>](https://github.com) | [<img loading="lazy" src="" width=115><br><sub>Jose </sub>](https://github.com/MattSouzaDev) |  [<img loading="lazy" src="" width=115><br><sub>Henrique</sub>](https://github.com) |
 | :---: | :---: | :---: | :---: | :---: |
