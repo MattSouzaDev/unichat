@@ -49,5 +49,5 @@ npm init docusaurus@latest
 This project exists thanks to all the people who contribute. <a href="https"></a>
 
 ## Autores
-| [<img loading="lazy" src="https://avatars.githubusercontent.com/mattsouza-dev" width=115><br><sub>Matheus Souza</sub>](https://github.com/mattsouza-dev) |  [<img loading="lazy" src=" " width=115><br><sub>Guilherme Lima</sub>](https://github.com/guilhermeonrails) |  [<img loading="lazy" src="?v=4" width=115><br><sub>Alex Felipe</sub>](https://github.com/alexfelipe) |
+| [<img loading="lazy" src="https://avatars.githubusercontent.com/mattsouza-dev" width=115><br><sub>Matheus Souza</sub>](https://github.com/mattsouza-dev) |  [<img loading="lazy" src=" " width=115><br><sub>Guilherme Lima</sub>](https://github.com) |  [<img loading="lazy" src="?v=4" width=115><br><sub>Alex Felipe</sub>](https://github.com) |
 | :---: | :---: | :---: |
