@@ -39,15 +39,13 @@ git clone https://github.com/MattSouzaDev/unichat.git
 cd unichat
 ```
 - Passo 3 <br>
-Crie um ambiente virtual. 
+Crie um ambiente virtual. <br>
+Obs: Se já tem um embiente virtual, não esqueça de adicionar ao arquivo .gitignore.
 ```
 pithon -m venv venv
 ```
-<br>
-Obs: Se já tem um embiente virtual, não esqueça de adicionar ao arquivo .gitignore. 
-<br>
 - Passo 4
-Agora instale o djnago no seu ambiente virtual se ja não tem instalado.
+Agora, instale o djnago no seu ambiente virtual.
 ```
 pip install django
 ```
