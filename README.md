@@ -30,8 +30,13 @@ Conectar estudantes e seus respectivos coursos em um único local, facilitando a
 Clone o repositório usando seu terminal. <br>
 [Clonar repositório](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository) Para mais informacões sobre clonar repositório no GitHub.
 
+- Passo 1
 ```bash
-npm init docusaurus@latest
+git clone https://github.com/MattSouzaDev/unichat.git
+```
+- Passo 2
+```
+cd unichat
 ```
 
 
