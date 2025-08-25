@@ -27,7 +27,7 @@ Conectar estudantes e seus respectivos coursos em um único local, facilitando a
 
 ## Installation
 
-Clone o repositório usando seu terminal.
+Clone o repositório usando seu terminal. <br>
 [Clonar repositório](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository) Para mais informacões sobre clonar repositório no GitHub.
 
 ```bash
@@ -40,5 +40,5 @@ npm init docusaurus@latest
 This project exists thanks to all the people who contribute. <a href="https"></a>
 
 ## Autores
-| [<img loading="lazy" src="https://avatars.githubusercontent.com/MattSouzaDev?v=4" width=115><br><sub>Matheus Souza</sub>](https://github.com/MattSouzaDev) |  [<img loading="lazy" src="#https://avatars.githubuserscontent.com/" width=115><br><sub>Gabriel</sub>](https://github.com) |  [<img loading="lazy" src="?v=4" width=115><br><sub>Elias</sub>](https://github.com) | [<img loading="lazy" src=" " width=115><br><sub>Elias</sub>](https://github.com) |
-| :---: | :---: | :---: |
+| [<img loading="lazy" src="https://avatars.githubusercontent.com/MattSouzaDev" width=115><br><sub>Matheus Souza</sub>](https://github.com/MattSouzaDev) |  [<img loading="lazy" src="#" width=115><br><sub>Gabriel</sub>](https://github.com) |  [<img loading="lazy" src="?v=4" width=115><br><sub>Elias</sub>](https://github.com) | [<img loading="lazy" src="" width=115><br><sub>Jose </sub>](https://github.com/MattSouzaDev) |  [<img loading="lazy" src="" width=115><br><sub>Henrique</sub>](https://github.com) |
+| :---: | :---: | :---: | :---: | :---: |
