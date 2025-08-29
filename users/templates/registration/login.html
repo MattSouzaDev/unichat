@@ -1,12 +1,63 @@
-<h1>Log In</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Log In</button>
-</form>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - UniChat</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css\login.css' %}">
 
-<p> Não tem conta? <a href="{% url 'register' %}">Registre-se aqui</a></p>
+<body>
+    <div class="login-container">
+        <div class="login-left-side">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'img/jovens.png' %}" class="d-block w-100" alt="Slide 1">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'img/jovens2.png' %}" class="d-block w-100" alt="Slide 2">
+            </div>
+            <div class="carousel-item">
+                 <img src="{% static 'img/jovens3.png' %}" class="d-block w-100" alt="Slide 3">
+            </div>
+        </div>
+    </div>
+     <div class="fixed-caption">
+        <h5>Conecte-se à sua Universidade</h5>
+    </div>
+        </div>
 
-<p>
-    <a href="{% url 'password_reset' %}">Esqueceu a senha?</a>
-</p>
+    <div class="login-right-side">
+        <div class="login-header">
+            <img src="{% static 'img/logo.png' %}" alt="UniChat Logo" class="small-logo">
+            <h1>UniChat</h1>
+            <h2>Faça login na sua conta</h2>
+        </div>
+
+        <form method="post" class="login-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <div class="form-group-flex">
+                <div>
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Lembrar-me</label>
+                </div>
+                <a href="{% url 'password_reset' %}">Esqueci minha senha</a>
+            </div>
+            
+            <button type="submit" class="login-button">Entrar</button>
+        </form>
+    
+        <div class="divider">
+            <span>ou</span>
+        </div>
+    
+        <p class="signup-link">Não tem uma conta? <a href="{% url 'register' %}">Cadastre-se gratuitamente</a></p>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
