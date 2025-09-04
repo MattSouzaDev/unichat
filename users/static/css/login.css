@@ -4,14 +4,15 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #04347c;
 }
 
 body {
+    min-height: 100vh;
+    margin: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
-    overflow: hidden; 
+    justify-content: center;
+    background-color: #04347c;
 }
 
 /* Contêiner Principal de Login */
@@ -24,9 +25,7 @@ body {
     width: 90%;
     max-width: 1200px;
     min-width: 700px;
-    height: auto; 
-    min-height: 550px; 
-    max-height: 95vh; 
+    height: 800px
 }
 
 /* --- Lado Esquerdo: Slideshow --- */
@@ -39,6 +38,7 @@ body {
     position: relative;
     padding: 0;
     margin: 0;
+    height: 100%;
 }
 
 /* Imagens do Slideshow */
@@ -87,22 +87,20 @@ body {
 
 /* --- Lado Direito: Formulário de Login --- */
 .login-right-side {
-    flex: 2; 
+    flex: 1 1 auto; 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 40px;
+    padding: 40px 20px;
     background-color: #ffffff;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    min-height: 500px;
+    overflow: auto;
+    max-height: 95vh;
 }
 
-.login-header {
-    text-align: center;
-    margin-bottom: 20px;
-    width: 100%; /
-}
 
 .small-logo {
     max-width: 100px;
@@ -147,6 +145,8 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    width: auto;
+    padding: 0;
 }
 
 /* Botão de Login */
@@ -203,4 +203,94 @@ body {
 .signup-link a {
     color: #04347c;
     text-decoration: none;
+}
+
+* --- Estilo dos Elementos do Formulário --- */
+/* Estilo para cada grupo de campo (label + input) */
+.form-group {
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+/* Estilo dos rótulos (Nome de usuário, Nome, Senha, etc.) */
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Estilo para a lista de regras de senha */
+.password-rules {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 10px;
+    padding-left: 20px;
+    list-style-type: disc;
+    display: none;
+}
+
+/* Estilo para o texto de ajuda (ex: "Obrigatório...") */
+.help-text {
+    font-size: 0.85em;
+    color: #888;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: none;
+}
+
+/* Estilo padrão para todos os inputs e textareas */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Cantos levemente arredondados */
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: box-shadow 0.3s ease; /* Transição suave */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06); /* Sombra suave */
+}
+
+/* Estilo quando o input está em foco (clicado) */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none; /* Remove o contorno padrão do navegador */
+    border-color: #04347c; /* Cor da borda ao focar */
+    box-shadow: 0 0 0 3px rgba(4, 52, 124, 0.2); /* Efeito de brilho */
+}
+
+
+/* Estilo do botão principal "Registrar" */
+button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    background-color: #04347c;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #032b60; /* Cor mais escura ao passar o mouse */
+}
+
+/* Estilo para o divisor "ou" */
+.divider {
+    margin: 25px 0;
+}
+/* Ajustes para o formulário de registro */
+.register-form {
+    margin: 0;
+    padding: 0;
+    width: 100%; 
+    max-height: 500px;
+    overflow-y: auto; 
 }
