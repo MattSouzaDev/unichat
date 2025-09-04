@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.forms import PasswordInput
 from .models import Profile
 from datetime import date
 
@@ -28,18 +29,14 @@ class UserRegisterForm(UserCreationForm):
         required=False
     )
 
-    class Meta(UserCreationForm.Meta):
-        fields = UserCreationForm.Meta.fields + ('first_name','last_name','email',)
-        labels = {
-            'username': 'Nome de usuário',
-            'password': 'Senha',
-            'password2': 'Confirmação de senha',
-        }
-        help_texts = {
-            'username': 'Obrigatório. 150 caracteres ou menos. Letras, dígitos e @/./+/-/_ apenas.',
-            'password': 'Sua senha não pode ser muito parecida com suas outras informações pessoais.',
-            'password2': 'Digite a mesma senha para verificação.',
-        }
+class Meta(UserCreationForm.Meta):
+    fields = UserCreationForm.Meta.fields + ('first_name', 'last_name', 'email', 'date_of_birth', 'bio', 'avatar')
+    labels = {
+        'username': 'Nome de usuário',
+    }
+    help_texts = {
+        'username': 'Obrigatório. 150 caracteres ou menos. Letras, dígitos e @/./+/-/_ apenas.',
+    }
     def clean_date_of_birth(self):
         dob = self.cleaned_data.get('date_of_birth')
         if dob:
