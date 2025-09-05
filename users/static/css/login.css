@@ -294,3 +294,25 @@ button[type="submit"]:hover {
     max-height: 500px;
     overflow-y: auto; 
 }
+
+
+.form-group input,
+.form-group textarea,
+.form-group select { 
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: box-shadow 0.3s ease; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06); 
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus { 
+    outline: none; 
+    border-color: #04347c;
+    box-shadow: 0 0 0 3px rgba(4, 52, 124, 0.2); 
+}

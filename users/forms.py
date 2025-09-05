@@ -1,42 +1,43 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.forms import PasswordInput
-from .models import Profile
+from .models import Profile, Course
 from datetime import date
 
 ## User Registration Form
-
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(
         label="Email",
         widget=forms.EmailInput(attrs={'autocomplete': 'Email'})
     )
-    first_name = forms.CharField(label="Nome",max_length=150,)
-    last_name = forms.CharField(label="Sobrenome",max_length=150,)
+    first_name = forms.CharField(label="Nome", max_length=150)
+    last_name = forms.CharField(label="Sobrenome", max_length=150)
     date_of_birth = forms.DateField(
         label="Data de Nascimento",
         widget=forms.DateInput(attrs={'type': 'date'}),
         required=True
     )
-    bio = forms.CharField(
-        label="Biografia",
-        widget=forms.Textarea(attrs={'rows': 4}),
-        required=False
-    )
     avatar = forms.ImageField(
         label="Avatar de perfil",
         required=False
     )
+    
+    course = forms.ModelChoiceField(
+        queryset=Course.objects.all(),
+        label="Curso",
+        empty_label="Selecione seu curso",
+        required=True
+    )
 
-class Meta(UserCreationForm.Meta):
-    fields = UserCreationForm.Meta.fields + ('first_name', 'last_name', 'email', 'date_of_birth', 'bio', 'avatar')
-    labels = {
-        'username': 'Nome de usuário',
-    }
-    help_texts = {
-        'username': 'Obrigatório. 150 caracteres ou menos. Letras, dígitos e @/./+/-/_ apenas.',
-    }
+    class Meta(UserCreationForm.Meta):
+        fields = UserCreationForm.Meta.fields + ('first_name', 'last_name', 'email', 'date_of_birth', 'avatar', 'course')
+        labels = {
+            'username': 'Nome de usuário',
+        }
+        help_texts = {
+            'username': 'Obrigatório. 150 caracteres ou menos. Letras, dígitos e @/./+/-/_ apenas.',
+        }
+
     def clean_date_of_birth(self):
         dob = self.cleaned_data.get('date_of_birth')
         if dob:
@@ -59,11 +60,16 @@ class Meta(UserCreationForm.Meta):
         user.last_name = self.cleaned_data['last_name']
         if commit:
             user.save()
+
+            avatar = self.cleaned_data.get('avatar', None)
+            date_of_birth = self.cleaned_data.get('date_of_birth', None)
+            course = self.cleaned_data.get('course', None)
+
             Profile.objects.create(
                 user=user,
-                bio=self.cleaned_data['bio'],
-                avatar=self.cleaned_data['avatar'],
-                date_of_birth=self.cleaned_data.get('date_of_birth')
+                avatar=avatar,
+                date_of_birth=date_of_birth,
+                course=course
             )
         return user
     
@@ -80,6 +86,8 @@ class UserUpdateForm(forms.ModelForm):
         }
 
 class ProfileUpdateForm(forms.ModelForm):
+    location = forms.CharField(max_length=100, required=False)
+    website = forms.URLField(required=False)
     date_of_birth = forms.DateField(
         label="Data de Nascimento",
         widget=forms.DateInput(attrs={'type': 'date'}),
@@ -88,7 +96,7 @@ class ProfileUpdateForm(forms.ModelForm):
     
     class Meta:
         model = Profile
-        fields = ['date_of_birth', 'bio', 'avatar']
+        fields = ['date_of_birth', 'bio', 'avatar', 'location', 'website', 'course']
         widgets = {
             'bio': forms.Textarea(attrs={'rows': 4})
         }
