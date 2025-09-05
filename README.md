@@ -47,7 +47,7 @@ pithon -m venv venv
 - Passo 4
 Agora, instale o django no seu ambiente virtual.
 ```
-pip install django
+pip install Django Pillow
 ```
 Para mais informação de como instalar o django [Leia a Documentação](https://docs.djangoproject.com/en/5.2/intro/install/)
 ## Contribuidores
