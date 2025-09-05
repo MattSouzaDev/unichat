@@ -53,5 +53,5 @@ Para mais informação de como instalar o django [Leia a Documentação](https:/
 ## Contribuidores
 
 Este projeto existe graças ao nosso time! 
-| [<img loading="lazy" src="https://avatars.githubusercontent.com/MattSouzaDev" width=115><br><sub>Matheus Souza</sub>](https://github.com/MattSouzaDev) |  [<img loading="lazy" src="#" width=115><br><sub>Gabriel</sub>](https://github.com) |  [<img loading="lazy" src="?v=4" width=115><br><sub>Elias</sub>](https://github.com) | [<img loading="lazy" src="" width=115><br><sub>Jose </sub>](https://github.com/MattSouzaDev) |  [<img loading="lazy" src="https://avatars.githubusercontent.com/zeyfu" width=115><br><sub>Henrique Kempim</sub>](https://github.com) |
+| [<img loading="lazy" src="https://avatars.githubusercontent.com/MattSouzaDev" width=115><br><sub>Matheus Souza</sub>](https://github.com/MattSouzaDev) |  [<img loading="lazy" src="#" width=115><br><sub>Gabriel</sub>](https://avatars.githubusercontent.com/u/92831339?v=4) |  [<img loading="lazy" src="?v=4" width=115><br><sub>Elias</sub>](https://github.com) | [<img loading="lazy" src="" width=115><br><sub>Jose </sub>](https://github.com/MattSouzaDev) |  [<img loading="lazy" src="https://avatars.githubusercontent.com/zeyfu" width=115><br><sub>Henrique Kempim</sub>](https://github.com) |
 | :---: | :---: | :---: | :---: | :---: |
