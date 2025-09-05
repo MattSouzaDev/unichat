@@ -5,66 +5,62 @@
 
 {% block extra_head %}
     <link rel="stylesheet" href="{% static 'users/css/profile.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 {% endblock %}
 
 {% block content %}
-<div class="profile-container">
-    <div class="profile-cover-section">
-        <img src="{% static 'img/cover-placeholder.jpg' %}" alt="Profile Cover" class="img-fluid profile-cover">
-        <div class="profile-avatar-container">
-            {% if user.profile.avatar %}
-                <img src="{{ user.profile.avatar.url }}" alt="Profile Avatar" class="profile-avatar" style="width: 200px; height: 200px;">
-            {% else %}
-                <img src="{% static 'img/default_profile.png' %}" alt="Default Profile" class="profile-avatar" style="width: 100px; height: 100px;">
+<div class="container mt-4">
+    <div class="card shadow-sm p-4">
+        <div class="d-flex justify-content-end mb-3">
+            <a href="{% url 'profile_update' %}" class="btn btn-primary">
+                <i class="fas fa-pencil-alt"></i> Editar perfil
+            </a>
+        </div>
+
+        <div class="d-flex align-items-center mb-4">
+            <div class="me-4">
+                {% if user.profile.avatar %}
+                    <img src="{{ user.profile.avatar.url }}" alt="Profile Avatar" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover;">
+                {% else %}
+                    <img src="{% static 'img/default_profile.png' %}" alt="Default Profile" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover;">
+                {% endif %}
+            </div>
+
+            <div>
+                <h1 class="h4 fw-bold mb-0">{{ user.first_name }} {{ user.last_name }}</h1>
+                <p class="text-muted mb-1">@{{ user.username }}</p>
+                {% if user.profile.course %}
+                    <p class="text-muted"><i class="fas fa-graduation-cap me-1"></i> {{ user.profile.course.name }}</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <p class="lead mb-4">{{ user.profile.bio|default:"Nenhuma bio adicionada ainda." }}</p>
+
+        <ul class="list-unstyled d-flex flex-wrap text-muted">
+            {% if user.profile.location %}
+            <li class="me-3 mb-2">
+                <i class="fas fa-map-marker-alt me-1"></i> {{ user.profile.location }}
+            </li>
             {% endif %}
-        </div>
-        <div class="edit-cover-button">
-            <a href="{% url 'profile_update' %}" class="btn btn-light"><i class="fas fa-camera"></i> Editar capa</a>
-        </div>
+            
+            {% if user.profile.website %}
+            <li class="me-3 mb-2">
+                <i class="fas fa-link me-1"></i> <a href="{{ user.profile.website }}" class="text-decoration-none">{{ user.profile.website }}</a>
+            </li>
+            {% endif %}
+
+            {% if age is not None %}
+            <li class="me-3 mb-2">
+                <i class="fas fa-birthday-cake me-1"></i> {{ age }} anos
+            </li>
+            {% endif %}
+            
+            <li class="me-3 mb-2">
+                <i class="far fa-calendar-alt me-1"></i> Ingressou em {{ user.date_joined|date:"F Y" }}
+            </li>
+        </ul>
+
     </div>
-
-    <div class="profile-info-section">
-        <div class="profile-header">
-            <h2 class="profile-name">{{ user.first_name }} {{ user.last_name }} <small class="text-muted">({{ user.username }})</small></h2>
-            <p class="profile-bio">{{ user.profile.bio|default:"Nenhuma bio adicionada ainda." }}</p>
-        </div>
-
-        <div class="profile-stats">
-            <div class="stat-item">
-                <strong>0</strong>
-                <small>Posts</small>
-            </div>
-            <div class="stat-item">
-                <strong>0</strong>
-                <small>Seguidores</small>
-            </div>
-            <div class="stat-item">
-                <strong>0</strong>
-                <small>Seguindo</small>
-            </div>
-        </div>
-        
-        <div class="profile-actions">
-            <a href="{% url 'profile_update' %}" class="btn btn-primary me-2">Editar perfil</a>
-        </div>
-    </div>
-
-    <ul class="nav nav-tabs profile-nav">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Posts</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Sobre</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Fotos</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Curtidas</a>
-        </li>
-    </ul>
-
-    <div class="profile-content mt-4">
-        </div>
 </div>
 {% endblock %}
