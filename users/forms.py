@@ -3,6 +3,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Profile, Course
 from datetime import date
+from django.forms import ModelMultipleChoiceField
+from django.forms.widgets import CheckboxSelectMultiple
+
 
 ## User Registration Form
 class UserRegisterForm(UserCreationForm):
@@ -58,6 +61,7 @@ class UserRegisterForm(UserCreationForm):
         user.email = self.cleaned_data['email']
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
+        
         if commit:
             user.save()
 
@@ -65,16 +69,48 @@ class UserRegisterForm(UserCreationForm):
             date_of_birth = self.cleaned_data.get('date_of_birth', None)
             course = self.cleaned_data.get('course', None)
 
-            Profile.objects.create(
+            profile = Profile.objects.create(
                 user=user,
                 avatar=avatar,
                 date_of_birth=date_of_birth,
-                course=course
             )
+            
+            if course:
+                profile.course.add(course)
+                
         return user
     
 
 ## Profile Update Form
+class ProfileUpdateForm(forms.ModelForm):
+    course = forms.ModelMultipleChoiceField(
+        queryset=Course.objects.all(),
+        widget=CheckboxSelectMultiple,
+        required=False,
+        label="Cursos"
+    )
+
+    def __init__(self, *args, **kwargs):
+        # Remove o argumento 'is_teacher' antes de chamar o método pai
+        is_teacher = kwargs.pop('is_teacher', False)
+        super().__init__(*args, **kwargs)
+
+        # Se o usuário NÃO for um professor, remove o campo 'is_teacher'
+        if not is_teacher:
+            del self.fields['is_teacher']
+
+    class Meta:
+        model = Profile
+        fields = ['bio', 'location', 'website', 'avatar', 'course', 'is_teacher']
+        labels = {
+            'bio': 'Bio',
+            'location': 'Localização',
+            'website': 'Site',
+            'avatar': 'Foto de Perfil',
+            'is_teacher': 'Sou um(a) professor(a)'
+        }
+        widgets = {
+            'bio': forms.Textarea(attrs={'rows': 4}), }
 
 class UserUpdateForm(forms.ModelForm):
     class Meta:
@@ -83,20 +119,4 @@ class UserUpdateForm(forms.ModelForm):
         labels = {
             'first_name': 'Nome',
             'last_name': 'Sobrenome',
-        }
-
-class ProfileUpdateForm(forms.ModelForm):
-    location = forms.CharField(max_length=100, required=False)
-    website = forms.URLField(required=False)
-    date_of_birth = forms.DateField(
-        label="Data de Nascimento",
-        widget=forms.DateInput(attrs={'type': 'date'}),
-        required=True
-    )
-    
-    class Meta:
-        model = Profile
-        fields = ['date_of_birth', 'bio', 'avatar', 'location', 'website', 'course']
-        widgets = {
-            'bio': forms.Textarea(attrs={'rows': 4})
         }

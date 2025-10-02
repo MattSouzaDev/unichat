@@ -27,7 +27,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
     'searchcontent.apps.SearchcontentConfig',
+    "crispy_forms",
+    "crispy_bootstrap5",
+    "posts.apps.PostsConfig",
+    'notifications.apps.NotificationsConfig',
+    'core.apps.CoreConfig',
+    'chat.apps.ChatConfig',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -63,13 +72,9 @@ WSGI_APPLICATION = 'unichat.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "djangounichat",
-        "USER": "postgres",
-        "PASSWORD": "H6mBvI4p8VBIzOIh",
-        "HOST": "db.dcmrtzjyjnydbfhxbjlj.supabase.co",
-        "PORT": "5432",
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -121,7 +126,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-LOGIN_REDIRECT_URL = 'profile'
+LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

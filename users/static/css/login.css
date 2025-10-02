@@ -1,318 +1,226 @@
-/* Estilos globais e de corpo da página */
-html, body {
-    height: 100%;
+/* Reset básico */
+* {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Fundo da página */
 body {
-    min-height: 100vh;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #04347c;
-}
-
-/* Contêiner Principal de Login */
-.login-container {
-    display: flex;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden; 
-    width: 90%;
-    max-width: 1200px;
-    min-width: 700px;
-    height: 800px
-}
-
-/* --- Lado Esquerdo: Slideshow --- */
-.login-left-side {
-    flex: 3; 
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    position: relative;
-    padding: 0;
-    margin: 0;
-    height: 100%;
-}
-
-/* Imagens do Slideshow */
-.login-left-side .carousel,
-.login-left-side .carousel-inner,
-.login-left-side .carousel-item {
-    width: 100%;
-    height: 100%; 
-    padding: 0;
-    margin: 0;
-}
-
-.login-left-side img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    display: block;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-
-.fixed-caption {
-    position: absolute; 
-    bottom: 20px;
-    left: 20px; 
-    transform: none;
-    z-index: 10; 
-    text-align: left;
-    color: #f9d121;
-    padding: 20px;
-   background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
-    padding: 15px 25px; 
-    border-radius: 8px;
-    width: auto; 
-    max-width: 80%; 
-}
-
-.fixed-caption h5 {
-   font-size: 2.2em; 
-    font-weight: bold;
-    line-height: 1.2;
-    margin: 0; 
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-}
-
-
-/* --- Lado Direito: Formulário de Login --- */
-.login-right-side {
-    flex: 1 1 auto; 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 40px 20px;
+    height: 100vh;
     background-color: #ffffff;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    min-height: 500px;
-    overflow: auto;
-    max-height: 95vh;
+    background-image: radial-gradient(circle, rgba(0,0,0,0.1) 10%, transparent 10%), radial-gradient(circle, rgba(0,0,0,0.1) 10%, transparent 10%);
+    background-size: 10px 10px;
+    background-position: 0 0, 5px 5px;
 }
 
+/* Container do formulário */
+.login-form-container {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
 
-.small-logo {
-    max-width: 100px;
-    max-height: 100px;
-    height: auto;
-    margin-bottom: 10px;
+/* Header */
+.login-header img.small-logo {
+    width: 80px;
+    margin-bottom: 15px;
 }
 
 .login-header h1 {
-    font-size: 2em;
-    font-weight: bold;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
     color: #04347c;
-    margin: 0;
 }
 
-.login-header h2 {
-    font-size: 1em;
+.login-header p {
+    font-size: 0.9rem;
     color: #666;
-    margin: 0;
+    margin-bottom: 25px;
 }
 
-.login-form {
-    width: 100%;
+/* Formulário */
+.login-form .form-group {
+    margin-bottom: 20px;
+    position: relative; /* Para posicionar ícones */
+    text-align: left;
 }
 
-.login-form p {
-    margin: 0 0 15px 0;
+.login-form label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #333;
 }
 
+/* Inputs com ícone */
 .login-form input[type="text"],
 .login-form input[type="password"] {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
+    padding: 10px 12px 10px 36px; /* Espaço à esquerda para o ícone */
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
 }
 
-/* Flexbox para 'Lembrar-me' e 'Esqueci a senha?' */
-.form-group-flex {
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    border-color: #04347c;
+    outline: none;
+}
+
+/* Ícones nos inputs */
+.form-group.user-icon::before,
+.form-group.password-icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.form-group.user-icon::before {
+    background-image: url('../img/user-icon.svg'); /* Substitua pelo seu ícone de usuário */
+}
+
+.form-group.password-icon::before {
+    background-image: url('../img/lock-icon.svg'); /* Substitua pelo seu ícone de cadeado */
+}
+
+/* Toggle password */
+.password-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+#id_password {
+    padding-right: 40px; /* espaço para o olho */
+}
+
+#toggle-password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    background-color: white;
+}
+
+/* Lembrar e link */
+.form-actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    width: auto;
-    padding: 0;
+    font-size: 0.85rem;
 }
 
-/* Botão de Login */
-.login-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #04347c;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-/* Divisor 'ou' */
-.divider {
+.form-actions div {
     display: flex;
     align-items: center;
-    text-align: center;
-    color: #888;
-    margin-bottom: 20px;
-    width: 100%;
 }
 
-.divider::before,
-.divider::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid #ddd;
+.form-actions input[type="checkbox"] {
+    margin-right: 5px;
 }
 
-.divider:not(:empty)::before {
-    margin-right: .5em;
-}
-
-.divider:not(:empty)::after {
-    margin-left: .5em;
-}
-
-.social-login-button img {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-}
-
-/* Link de Cadastro */
-.signup-link {
-    text-align: center;
-    font-size: 0.9em;
-    color: #666;
-}
-
-.signup-link a {
+.form-actions a {
     color: #04347c;
     text-decoration: none;
 }
 
-* --- Estilo dos Elementos do Formulário --- */
-/* Estilo para cada grupo de campo (label + input) */
-.form-group {
-    width: 100%;
-    margin-bottom: 5px;
-    padding: 0;
+.form-actions a:hover {
+    text-decoration: underline;
 }
 
-/* Estilo dos rótulos (Nome de usuário, Nome, Senha, etc.) */
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 1em;
-    font-weight: bold;
-    color: #333;
-}
-
-/* Estilo para a lista de regras de senha */
-.password-rules {
-    font-size: 0.85em;
-    color: #666;
-    margin-top: 10px;
-    padding-left: 20px;
-    list-style-type: disc;
-    display: none;
-}
-
-/* Estilo para o texto de ajuda (ex: "Obrigatório...") */
-.help-text {
-    font-size: 0.85em;
-    color: #888;
-    margin-top: 0;
-    margin-bottom: 0;
-    display: none;
-}
-
-/* Estilo padrão para todos os inputs e textareas */
-.form-group input,
-.form-group textarea {
+/* Botão */
+.login-form button {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px; /* Cantos levemente arredondados */
-    box-sizing: border-box;
-    font-size: 1em;
-    transition: box-shadow 0.3s ease; /* Transição suave */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06); /* Sombra suave */
-}
-
-/* Estilo quando o input está em foco (clicado) */
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none; /* Remove o contorno padrão do navegador */
-    border-color: #04347c; /* Cor da borda ao focar */
-    box-shadow: 0 0 0 3px rgba(4, 52, 124, 0.2); /* Efeito de brilho */
-}
-
-
-/* Estilo do botão principal "Registrar" */
-button[type="submit"] {
-    width: 100%;
-    padding: 14px;
-    background-color: #04347c;
-    color: #ffffff;
     border: none;
     border-radius: 8px;
-    font-size: 1.1em;
-    font-weight: bold;
+    background: #04347c;
+    color: #fff;
+    font-size: 1rem;
     cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.login-form button:hover {
+    background: #032b5c;
+    transform: scale(1.05);
+}
+
+/* Link de cadastro */
+.signup-link {
+    font-size: 0.85rem;
     margin-top: 15px;
-    transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover {
-    background-color: #032b60; /* Cor mais escura ao passar o mouse */
+.signup-link a {
+    color: #4dbdec;
+    text-decoration: none;
 }
 
-/* Estilo para o divisor "ou" */
-.divider {
-    margin: 25px 0;
-}
-/* Ajustes para o formulário de registro */
-.register-form {
-    margin: 0;
-    padding: 0;
-    width: 100%; 
-    max-height: 500px;
-    overflow-y: auto; 
+.signup-link a:hover {
+    text-decoration: underline;
 }
 
-
-.form-group input,
-.form-group textarea,
-.form-group select { 
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-sizing: border-box;
-    font-size: 1em;
-    transition: box-shadow 0.3s ease; 
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06); 
+/* Tema escuro */
+body.dark-theme {
+    background-color: #1a1a1a;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10%), radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10%);
+    color: #e0e0e0;
 }
 
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus { 
-    outline: none; 
-    border-color: #04347c;
-    box-shadow: 0 0 0 3px rgba(4, 52, 124, 0.2); 
+body.dark-theme .login-form-container {
+    background: rgba(50,50,50,0.9);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+body.dark-theme .login-header h1,
+body.dark-theme .login-header p,
+body.dark-theme .login-form label,
+body.dark-theme .signup-link {
+    color: #e0e0e0;
+}
+
+body.dark-theme .form-actions a {
+    color: #4dbdec;
+}
+
+body.dark-theme .login-form button {
+    background: #4dbdec;
+}
+
+body.dark-theme .login-form button:hover {
+    background: #3a9bbf;
+}
+
+/* Alerta de erro */
+.alert {
+    background-color: #f8d7da;
+    color: #842029;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
 }
