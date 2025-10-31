@@ -27,7 +27,7 @@ urlpatterns = [
 
     # URL do painel de notificação
     path('notifications/', include('notifications.urls')),
-    
+
     # URL do chat
     path('ws/chat/', include('chat.urls')),
 ]
