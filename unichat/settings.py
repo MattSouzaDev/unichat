@@ -7,10 +7,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ---------------------------------------------------------------------
 # 🔐 Security / Environment
 # ---------------------------------------------------------------------
-SECRET_KEY = os.environ.get(
-    "SECRET_KEY"
-)
-DEBUG = os.environ.get("DEBUG", "True").lower() == "true"
+
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "fallback-secret-key")
+
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
 # Railway injects the deployment domain automatically; add localhost for dev
 ALLOWED_HOSTS = ['unichat-prod.up.railway.app','localhost', '127.0.0.1']
@@ -74,7 +74,7 @@ ASGI_APPLICATION = "unichat.asgi.application"
 
 
 # Channels / Redis
-REDIS_URL = os.getenv("REDIS_URL")
+REDIS_URL = os.getenv("REDIS_URL", "redis://127.0.0.1:6379")
 
 CHANNEL_LAYERS = {
     "default": {
