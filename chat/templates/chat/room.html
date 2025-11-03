@@ -48,16 +48,16 @@
 </div>
 
 <script>
-    let ngrok_url = ""
 
     const roomId = JSON.parse(document.getElementById('room-id').textContent);
 
     // const chatSocket = new WebSocket(
-    //     'wss://' + `${ngrok_url} + '/ws/chat/` + roomId + '/'
+    //     'wss://' + `${url} + '/ws/chat/` + roomId + '/'
     // );
 
+    const ptl = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
     const chatSocket = new WebSocket(
-        'ws://' + window.location.host + '/ws/chat/' + roomId + '/'
+        ptl + window.location.host + '/ws/chat/' + roomId + '/'
     );
 
     chatSocket.onmessage = function (e) {
