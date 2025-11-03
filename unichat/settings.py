@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # 🔐 Security / Environment
 # ---------------------------------------------------------------------
 SECRET_KEY = os.environ.get(
-    "SECRET_KEY", "django-insecure-9df+igxnu!9f62$u09e$i4*x)b92x344bhq(b-8p=4ag4@@5+*"
+    "SECRET_KEY"
 )
 DEBUG = os.environ.get("DEBUG", "True").lower() == "true"
 
@@ -74,7 +74,7 @@ ASGI_APPLICATION = "unichat.asgi.application"
 
 
 # Channels / Redis
-REDIS_URL = os.getenv("REDIS_URL", "redis://127.0.0.1:6379")
+REDIS_URL = os.getenv("REDIS_URL")
 
 CHANNEL_LAYERS = {
     "default": {
