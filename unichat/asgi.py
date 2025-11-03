@@ -12,16 +12,19 @@ from django.core.asgi import get_asgi_application
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.security.websocket import AllowedHostsOriginValidator
+import chat.routing
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'unichat.settings')
 
 asgi_app = get_asgi_application()
 
-from chat.routing import ws_urlpatterns
-
 application = ProtocolTypeRouter(
     {
         "http": asgi_app,
-        "websocket": AllowedHostsOriginValidator(AuthMiddlewareStack(URLRouter(ws_urlpatterns)))
+        "websocket": AllowedHostsOriginValidator(
+            AuthMiddlewareStack(
+                URLRouter(
+                    chat.routing.ws_urlpatterns
+                    )))
     }
 )
