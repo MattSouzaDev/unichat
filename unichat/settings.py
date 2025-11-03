@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get(
     "SECRET_KEY", "django-insecure-9df+igxnu!9f62$u09e$i4*x)b92x344bhq(b-8p=4ag4@@5+*"
 )
-DEBUG = False
+DEBUG = os.environ.get("DEBUG", "True").lower() == "true"
 
 # Railway injects the deployment domain automatically; add localhost for dev
 ALLOWED_HOSTS = ['unichat-prod.up.railway.app','localhost', '127.0.0.1']
@@ -121,7 +121,6 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "login"
-
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
