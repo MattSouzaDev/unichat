@@ -4,13 +4,10 @@ import dj_database_url  # parses DATABASE_URL for production
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# ---------------------------------------------------------------------
-# 🔐 Security / Environment
-# ---------------------------------------------------------------------
 
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "fallback-secret-key")
+SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
 
-DEBUG = os.getenv("DEBUG", "False") == "True"
+DEBUG = os.environ.get("DEBUG", "True").lower() == "true"
 
 # Railway injects the deployment domain automatically; add localhost for dev
 ALLOWED_HOSTS = ['unichat-prod.up.railway.app','localhost', '127.0.0.1']
