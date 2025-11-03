@@ -74,12 +74,15 @@ ASGI_APPLICATION = "unichat.asgi.application"
 
 
 # Channels / Redis
-REDIS_URL = os.environ.get("REDIS_URL", "redis://127.0.0.1:6379")
+REDIS_URL = os.getenv("REDIS_URL", "redis://127.0.0.1:6379")
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {"hosts": [REDIS_URL]},
-    }
+        "CONFIG": {
+            "hosts": [REDIS_URL],
+        },
+    },
 }
 
 # Database (SQLite locally, PostgreSQL on Railway)
