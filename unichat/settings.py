@@ -13,11 +13,10 @@ SECRET_KEY = os.environ.get(
 DEBUG = os.environ.get("DEBUG", "True").lower() == "true"
 
 # Railway injects the deployment domain automatically; add localhost for dev
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
+ALLOWED_HOSTS = ['unichat-prod.up.railway.app','localhost', '127.0.0.1']
 
-# If you use CSRF protection with custom domain (e.g. your-app.up.railway.app)
 CSRF_TRUSTED_ORIGINS = [
-    f"https://{host}" for host in ALLOWED_HOSTS if host not in ("localhost", "127.0.0.1")
+    'https://unichat-prod.up.railway.app',
 ]
 
 
