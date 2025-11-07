@@ -4,7 +4,6 @@ import dj_database_url  # parses DATABASE_URL for production
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
 
 DEBUG = os.environ.get("DEBUG", "True").lower() == "true"
