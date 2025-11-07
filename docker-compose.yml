@@ -1,33 +1,43 @@
 version: "3.8"
 services:
-  web:
-    build: .
-    command: daphne -b 0.0.0.0 -p 8000 myproject.asgi:application
-    volumes:
-      - .:/app
-    ports:
-      - "8000:8000"
-    env_file:
-      - .env
-    depends_on:
-      - redis
-      - db
-
-  redis:
-    image: redis:7
-    ports:
-      - "6379:6379"
-
   db:
     image: postgres:15
+    restart: unless-stopped
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: mydb
-    ports:
-      - "5432:5432"
+      POSTGRES_DB: unichat
     volumes:
       - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["sh", "-c", "python manage.py migrate --noinput && daphne -b 0.0.0.0 -p 8000 unichat.asgi:application"]
+    volumes:
+      - .:/app
+      - staticfiles:/app/staticfiles
+      - media:/app/media
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      DEBUG: "True"
+      SECRET_KEY: "local-secret-key"
+      DATABASE_URL: "postgres://postgres:postgres@db:5432/unichat"
+      REDIS_URL: "redis://redis:6379"
+      # MEDIA/STATIC related envs if needed
 volumes:
   pgdata:
+  staticfiles:
+  media:

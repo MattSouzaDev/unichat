@@ -1,27 +1,31 @@
 FROM python:3.11-slim
 
-# System dependencies
+# System deps
 RUN apt-get update && apt-get install -y build-essential libpq-dev && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-#Install Python dependencies
+# Copy requirements and install
 COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Copy project files
+# Copy project
 COPY . .
 
-# Environment setup
-ENV DJANGO_SETTINGS_MODULE=unichat.settings
+# Env defaults
 ENV PYTHONUNBUFFERED=1
+ENV DJANGO_SETTINGS_MODULE=unichat.settings
 
-# Collect static files for production
+# Make entrypoint executable
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Collect static (safe if all files are in repo)
 RUN python manage.py collectstatic --noinput
 
-# Expose port
 EXPOSE 8000
 
-#  Start command
-CMD ["sh", "-c", "python manage.py migrate --noinput && daphne -b 0.0.0.0 -p 8000 unichat.asgi:application"]
+# Use entrypoint to run migrations and start daphne binding to $PORT
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["daphne", "-b", "0.0.0.0", "-p", "${PORT:-8000}", "unichat.asgi:application"]
